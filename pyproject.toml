@@ -7,7 +7,10 @@ authors = [
     { name = "niels-2005", email = "niels.scholz01@web.de" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "streamlit>=1.50.0",
+    "requests>=2.25.0",
+]
 
 [project.scripts]
 rottenbot-frontend = "rottenbot_frontend:main"
