@@ -84,6 +84,7 @@ def login_page():
                 if response.status_code == 200:
                     st.session_state.logged_in = True
                     st.session_state.user_data = data["user"]
+                    print("User data:", st.session_state.user_data)
                     st.session_state.access_token = data["access_token"]
                     st.session_state.refresh_token = data["refresh_token"]
                     st.success("Logged in successfully! Redirecting to Predict...")
@@ -104,16 +105,30 @@ def login_page():
 def predict_page():
     st.header("Predict")
     uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+    save_predictions = st.checkbox("Save Predictions", value=True)
     if st.button("Vorhersagen"):
         if uploaded_file is not None:
-            # Dummy HTTP request with file
             try:
-                files = {"file": uploaded_file.getvalue()}
+                st.image(uploaded_file, caption="Uploaded Image")
+                file_bytes = uploaded_file.getvalue()
+
+                files = {"file": (uploaded_file.name, file_bytes, uploaded_file.type)}
+
                 response = requests.post(
-                    "https://httpbin.org/post", files={"file": uploaded_file}
+                    f"http://127.0.0.1:8001/api/v1/inference/predict?save_prediction={save_predictions}&user_uid={st.session_state.user_data['uid']}",
+                    files=files,
                 )
-                st.session_state.predict_response = response.json()
-                st.write("Prediction response:", st.session_state.predict_response)
+                json_response = response.json()
+                if response.status_code == 200:
+                    if json_response["confidence"] < 0.9:
+                        st.error(
+                            f"Cannot confidently classify the image. Please use another image."
+                        )
+                    else:
+                        st.success(
+                            f"Prediction: {json_response['predicted_class_name']}"
+                        )
+
             except Exception as e:
                 st.error(f"Prediction failed: {e}")
         else:
