@@ -4,10 +4,37 @@ from src.rottenbot_frontend.config import Config
 
 
 def predict_page():
-    st.header("Predict")
+    st.header(f"Hi {st.session_state.user_data['first_name']}!")
+
+    # Logout button
+    if st.button("Logout"):
+        try:
+            response = requests.get(
+                Config.LOGOUT_ENDPOINT,
+                headers={"Authorization": f"Bearer {st.session_state.access_token}"},
+            )
+            if response.status_code == 200:
+                st.success("Logged out successfully.")
+                st.session_state.logged_in = False
+                st.session_state.user_data = None
+                st.session_state.access_token = None
+                st.session_state.refresh_token = None
+                st.session_state.page = "main"
+                st.rerun()
+            else:
+                st.rerun()
+        except Exception as e:
+            st.error(f"Logout failed: {e}")
+            st.rerun()
+
+    # image uploader
     uploaded_file = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg"])
+
+    # let the user decide if predictions should be saved
     save_predictions = st.checkbox("Save Predictions", value=True)
-    if st.button("Vorhersagen"):
+
+    # prediction button
+    if st.button("Predict"):
         if uploaded_file is not None:
             try:
                 st.image(uploaded_file, caption="Uploaded Image")

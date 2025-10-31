@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     LOGIN_ENDPOINT: str
     SIGNUP_ENDPOINT: str
     PREDICT_ENDPOINT: str
+    LOGOUT_ENDPOINT: str
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
