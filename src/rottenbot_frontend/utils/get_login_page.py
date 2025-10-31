@@ -14,7 +14,12 @@ def login_page():
             try:
                 response = requests.post(
                     Config.LOGIN_ENDPOINT,
-                    json={"email": email, "password": password},
+                    json={
+                        "login_data": {
+                            "email": email,
+                            "password": password,
+                        }
+                    },
                 )
                 data = response.json()
                 st.session_state.login_response = data

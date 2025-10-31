@@ -17,10 +17,12 @@ def signup_page():
                 response = requests.post(
                     Config.SIGNUP_ENDPOINT,
                     json={
-                        "first_name": first_name,
-                        "last_name": last_name,
-                        "email": email,
-                        "password": password,
+                        "user_data": {
+                            "first_name": first_name,
+                            "last_name": last_name,
+                            "email": email,
+                            "password": password,
+                        }
                     },
                 )
                 data = response.json()
