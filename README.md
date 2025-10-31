@@ -124,3 +124,5 @@ This project includes a **simple CI pipeline** that automatically builds and dep
 ## 📝 License
 
 This project is part of the RottenBot ecosystem. See the main RottenBot repository for licensing information.
+
+This README.md file was written by AI but strictly followed by human review and edits.
