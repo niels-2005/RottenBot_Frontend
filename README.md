@@ -37,6 +37,10 @@ Landing page offering two options:
 - **Sign Up** - Create a new account
 - **Login** - Access existing account
 
+Example of Main Page: 
+
+![Main Page Example](readme_images/main_page_example.png)
+
 ### 2. Sign Up Page
 Registration form with fields:
 - First Name
@@ -46,12 +50,20 @@ Registration form with fields:
 
 Automatically redirects to login after successful registration.
 
+Example of Sign Up Page: 
+
+![Sign Up Page Example](readme_images/signup_page_example.png)
+
 ### 3. Login Page
 Authentication form with:
 - Email
 - Password
 
 Stores JWT tokens in session state upon successful login and redirects to the Prediction Page after successful login.
+
+Example of Login Page: 
+
+![Login Page Example](readme_images/login_page_example.png)
 
 ### 4. Prediction Page
 Main application interface featuring:
@@ -60,6 +72,10 @@ Main application interface featuring:
 - "Save Predictions" checkbox
 - Prediction button
 - Results display with confidence score
+
+Example of Prediction Page: 
+
+![Prediction Page Example](readme_images/predict_page_example.png)
 
 ## 🚀 Quick Start
 

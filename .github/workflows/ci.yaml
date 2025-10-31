@@ -2,7 +2,7 @@ name: ci (NOT PRODUCTION READY!)
 
 on:
    push:
-    branches: [ main ]
+    # branches: [ main ] 
 
 env:
   IMAGE_NAME: rotten_bot_frontend
