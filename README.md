@@ -95,7 +95,8 @@ frontend_service:
   environment:
     # look in the .env.example file for all required environment variables and explanations.
     LOGIN_ENDPOINT: ${LOGIN_ENDPOINT}           
-    SIGNUP_ENDPOINT: ${SIGNUP_ENDPOINT}         
+    SIGNUP_ENDPOINT: ${SIGNUP_ENDPOINT}     
+    LOGOUT_ENDPOINT: ${LOGOUT_ENDPOINT}    
     PREDICT_ENDPOINT: ${PREDICT_ENDPOINT}       
 ```
 
