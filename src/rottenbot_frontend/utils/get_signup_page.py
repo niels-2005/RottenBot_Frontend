@@ -12,6 +12,9 @@ def signup_page():
         password = st.text_input("Password", type="password")
         submitted = st.form_submit_button("Sign Up")
         if submitted:
+            if not first_name or not last_name or not email or not password:
+                st.error("All fields are required.")
+                return
             # HTTP request
             try:
                 response = requests.post(

@@ -10,6 +10,9 @@ def login_page():
         password = st.text_input("Password", type="password")
         submitted = st.form_submit_button("Login")
         if submitted:
+            if not email or not password:
+                st.error("Email and password are required.")
+                return
             # HTTP request
             try:
                 response = requests.post(
