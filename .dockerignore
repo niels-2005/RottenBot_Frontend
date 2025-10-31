@@ -15,7 +15,7 @@ venv/
 # Docker-spezifisch
 Dockerfile
 .dockerignore
-docker-compose.yml  
+docker-compose.yaml  
 
 # Dokumentation und nicht-essenzielle Dateien
 docs/
@@ -30,6 +30,11 @@ tests/
 # Umgebungsdateien (sensibel)
 .env
 .env.local
+.env.example 
+
+.github 
+
+README.md 
 
 # IDE-spezifisch
 .vscode/

@@ -1,5 +1,10 @@
 import streamlit as st
-from rottenbot_frontend.utils import signup_page, login_page, main_page, predict_page
+from src.rottenbot_frontend.utils import (
+    signup_page,
+    login_page,
+    main_page,
+    predict_page,
+)
 
 # Initialize session state
 if "logged_in" not in st.session_state:

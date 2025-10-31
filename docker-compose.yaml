@@ -1,0 +1,10 @@
+services:
+  frontend_service:
+    container_name: frontend_service
+    image: frontend_test
+    ports:
+      - "8501:8501"
+    environment:
+      LOGIN_ENDPOINT: http://localhost:8000/api/v1/auth/login
+      SIGNUP_ENDPOINT: http://localhost:8000/api/v1/auth/signup
+      PREDICT_ENDPOINT: http://localhost:8000/api/v1/inference/predict
